@@ -6,7 +6,8 @@
       "protocol": "openid-connect",
       "publicClient": false,
       "redirectUris": [
-        "http://localhost:8000/callback"
+        "http://localhost:8000/callback",
+        "http://127.0.0.1:8000/callback"
       ],
       "secret": "L0nrBUABwIm3ghXrrXmoX76BJ6xjzDvy_wzDff6rKQ0",
       "standardFlowEnabled": true,
@@ -24,6 +25,20 @@
             "id.token.claim": "true",
             "access.token.claim": "true",
             "claim.name": "groups",
+            "userinfo.token.claim": "true"
+          }
+        },
+        {
+          "name": "realm roles",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-realm-role-mapper",
+          "consentRequired": false,
+          "config": {
+            "id.token.claim": "true",
+            "access.token.claim": "true",
+            "claim.name": "realm_access.roles",
+            "jsonType.label": "String",
+            "multivalued": "true",
             "userinfo.token.claim": "true"
           }
         }
@@ -46,12 +61,12 @@
   "roles": {
     "realm": [
       {
-        "description": "User role",
-        "name": "users"
+        "description": "Read Only role",
+        "name": "read_only"
       },
       {
-        "description": "Admin role",
-        "name": "administrators"
+        "description": "Full Access role",
+        "name": "full_access"
       }
     ]
   },
@@ -66,7 +81,7 @@
       ],
       "enabled": true,
       "realmRoles": [
-        "users"
+        "read_only"
       ],
       "groups": [
         "/developers"
@@ -86,7 +101,7 @@
       ],
       "enabled": true,
       "realmRoles": [
-        "administrators"
+        "full_access"
       ],
       "groups": [
         "/sysadmins"

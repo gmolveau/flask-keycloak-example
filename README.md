@@ -1,9 +1,10 @@
 # A simple example of a preloaded keycloak and a flask app
 
 - `docker` is required
-- `keycloak` instance will be preloaded with 2 users and 2 groups
-  - `user:user` in group `users`
-  - `admin:admin` in group `administrators`
+- `just` is required : <https://github.com/casey/just>
+- a `keycloak` instance will be preloaded with 2 users and 2 groups
+  - `user:user` in group `developers` with role `read_only`
+  - `admin:admin` in group `sysadmins` with role `full_access`
 
 ## Getting started
 
@@ -11,7 +12,7 @@ In terminal 1 :
 
 - `just run-keycloak`
 
-go to <http://localhost:8080> and login with `admin:admin` to check that it works
+go to <http://localhost:8080> and login with `keycloak:keycloak` to check that it works
 
 In terminal 2 :
 
