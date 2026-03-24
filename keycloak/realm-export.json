@@ -1,0 +1,100 @@
+{
+  "clients": [
+    {
+      "clientId": "flask-app",
+      "directAccessGrantsEnabled": true,
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "redirectUris": [
+        "http://localhost:8000/callback"
+      ],
+      "secret": "L0nrBUABwIm3ghXrrXmoX76BJ6xjzDvy_wzDff6rKQ0",
+      "standardFlowEnabled": true,
+      "webOrigins": [
+        "http://localhost:8000"
+      ],
+      "protocolMappers": [
+        {
+          "name": "groups",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-group-membership-mapper",
+          "consentRequired": false,
+          "config": {
+            "full.path": "false",
+            "id.token.claim": "true",
+            "access.token.claim": "true",
+            "claim.name": "groups",
+            "userinfo.token.claim": "true"
+          }
+        }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "name": "developers",
+      "path": "/developers"
+    },
+    {
+      "name": "sysadmins",
+      "path": "/sysadmins"
+    }
+  ],
+  "enabled": true,
+  "id": "myrealm",
+  "realm": "myrealm",
+  "roles": {
+    "realm": [
+      {
+        "description": "User role",
+        "name": "users"
+      },
+      {
+        "description": "Admin role",
+        "name": "administrators"
+      }
+    ]
+  },
+  "users": [
+    {
+      "credentials": [
+        {
+          "temporary": false,
+          "type": "password",
+          "value": "user"
+        }
+      ],
+      "enabled": true,
+      "realmRoles": [
+        "users"
+      ],
+      "groups": [
+        "/developers"
+      ],
+      "username": "user",
+      "email": "user@example.com",
+      "firstName": "User",
+      "lastName": "One"
+    },
+    {
+      "credentials": [
+        {
+          "temporary": false,
+          "type": "password",
+          "value": "admin"
+        }
+      ],
+      "enabled": true,
+      "realmRoles": [
+        "administrators"
+      ],
+      "groups": [
+        "/sysadmins"
+      ],
+      "username": "admin",
+      "email": "admin@example.com",
+      "firstName": "Admin",
+      "lastName": "One"
+    }
+  ]
+}
