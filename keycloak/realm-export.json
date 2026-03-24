@@ -6,8 +6,8 @@
       "protocol": "openid-connect",
       "publicClient": false,
       "redirectUris": [
-        "http://localhost:8000/callback",
-        "http://127.0.0.1:8000/callback"
+        "http://localhost:8000/authorize",
+        "http://127.0.0.1:8000/authorize"
       ],
       "secret": "L0nrBUABwIm3ghXrrXmoX76BJ6xjzDvy_wzDff6rKQ0",
       "standardFlowEnabled": true,

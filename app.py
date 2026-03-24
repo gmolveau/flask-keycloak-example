@@ -37,14 +37,13 @@ def home():
 def login():
     nonce = secrets.token_urlsafe(16)
     session["nonce"] = nonce
-    print(nonce)
-    redirect_uri = url_for("callback", _external=True)
+    redirect_uri = url_for("authorize_endpoint", _external=True)
     print(redirect_uri)
     return oauth.keycloak.authorize_redirect(redirect_uri, nonce=nonce)
 
 
-@app.route("/callback")
-def callback():
+@app.route("/authorize")
+def authorize_endpoint():
     nonce = session.pop("nonce", None)
     if not nonce:
         return "Error: Missing nonce in session", 400
