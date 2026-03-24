@@ -12,7 +12,9 @@ oauth.register(
     name="keycloak",
     client_id="flask-app",
     client_secret="L0nrBUABwIm3ghXrrXmoX76BJ6xjzDvy_wzDff6rKQ0",
-    server_metadata_url="http://localhost:8080/realms/myrealm/.well-known/openid-configuration",
+    authorize_url="http://localhost:8080/realms/myrealm/protocol/openid-connect/auth",
+    access_token_url="http://localhost:8080/realms/myrealm/protocol/openid-connect/token",
+    jwks_uri="http://localhost:8080/realms/myrealm/protocol/openid-connect/certs",
     client_kwargs={
         "scope": "openid email profile",
     },
